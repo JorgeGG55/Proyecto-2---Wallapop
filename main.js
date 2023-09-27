@@ -71,7 +71,6 @@ const products = [
         seller: 'Microsoft Store',
         image: 'https://cdn.idealo.com/folder/Product/201204/9/201204911/s11_produktbild_gross/.jpg'
     },
-    // Agrega más productos aquí...
 ];
 
 
@@ -110,10 +109,9 @@ function createProductCard(product) {
     return card;
 }
 
-// Obtener vendedores únicos de los productos
 const uniqueSellers = [...new Set(products.map((product) => product.seller))];
 
-// Crear opciones para el filtro de vendedores
+
 const sellerFilter = document.getElementById('sellerFilter');
 uniqueSellers.forEach((seller) => {
     const option = document.createElement('option');
@@ -126,7 +124,7 @@ const priceFilter = document.getElementById('priceFilter');
 const filterButton = document.getElementById('filterButton');
 const clearFiltersButton = document.getElementById('clearFiltersButton');
 
-// Función para aplicar filtros
+
 function applyFilters() {
     const selectedSeller = sellerFilter.value;
     const maxPrice = parseFloat(priceFilter.value);
@@ -138,17 +136,17 @@ function applyFilters() {
         return sellerMatch && priceMatch;
     });
 
-    // Limpiar la lista actual de productos
+
     productContainer.innerHTML = '';
 
-    // Mostrar los productos filtrados
+
     filteredProducts.forEach((product) => {
         const productCard = createProductCard(product);
         productContainer.appendChild(productCard);
     });
 }
 
-// Manejadores de eventos para los filtros y el botón "Limpiar Filtros"
+
 filterButton.addEventListener('click', applyFilters);
 clearFiltersButton.addEventListener('click', () => {
     sellerFilter.value = 'Todos';
@@ -156,7 +154,7 @@ clearFiltersButton.addEventListener('click', () => {
     applyFilters();
 });
 
-// Inicializar la página mostrando todos los productos
+
 products.forEach((product) => {
     const productCard = createProductCard(product);
     productContainer.appendChild(productCard);
